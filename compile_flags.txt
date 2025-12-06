@@ -1,0 +1,8 @@
+-std=c11
+--target=riscv32-unknown-elf
+-fno-builtin
+-fno-stack-protector
+-ffreestanding
+-nostdlib
+-I./src/kernel/includes
+-I./src/libc/includes

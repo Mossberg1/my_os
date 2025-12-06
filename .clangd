@@ -1,0 +1,11 @@
+CompileFlags:
+  Add:
+    - -std=c11
+    - --target=riscv32-unknown-elf
+    - -fno-builtin
+    - -fno-stack-protector
+    - -ffreestanding
+    - -nostdlib
+    - -Isrc/kernel/includes
+    - -Isrc/libc/includes
+  CompilationDatabase: .
