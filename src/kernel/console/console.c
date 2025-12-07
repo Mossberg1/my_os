@@ -1,11 +1,15 @@
 #include <kernel.h>
 #include <ktypes.h>
+#include <hal.h>
 
-void kputchar(char ch) {
-    sbi_call(ch, 0, 0, 0, 0, 0, 0, 1 /* Console Putchar */);
+
+void kputchar(char ch) 
+{
+    hal_putchar(ch);
 }
 
-void kprintf(const char *fmt, ...) {
+void kprintf(const char *fmt, ...) 
+{
     va_list vargs;
     va_start(vargs, fmt);
 

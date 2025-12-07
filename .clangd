@@ -8,4 +8,5 @@ CompileFlags:
     - -nostdlib
     - -Isrc/kernel/includes
     - -Isrc/libc/includes
+    - -I./src/kernel/arch/riscv/includes
   CompilationDatabase: .

@@ -6,3 +6,4 @@
 -nostdlib
 -I./src/kernel/includes
 -I./src/libc/includes
+-I./src/kernel/arch/riscv/includes
