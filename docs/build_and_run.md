@@ -32,27 +32,3 @@ The run.sh script compiles and runs the virtual machine.
 $ chmod +x run.sh
 $ ./run.sh
 ```
-
-## Documentation
-The documentation is located under the docs directory. It could be used with mkdocs and the requirements.txt file in the root
-directory contains the dependencies to be able to run mkdocs. To start mkdocs follow these steps.
-
-### Create a virtual environment
-```sh
-$ python3 -m venv .venv
-```
-
-### Activate virtual environment
-```sh
-$ source .venv/bin/activate
-```
-
-### Install requirements
-```sh
-$ pip3 install -r requirements.txt
-```
-
-### Run mkdocs
-```sh
-$ mkdocs serve
-```

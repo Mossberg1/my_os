@@ -38,5 +38,8 @@ $CC $CFLAGS $INCLUDES -Wl,-Tsrc/kernel/kernel.ld -Wl,-Map=build/kernel.map -o bu
     build/obj/hal.o \
     build/obj/sbi.o
 
-$QEMU -machine virt -bios default -nographic -serial mon:stdio --no-reboot \
+#$QEMU -machine virt -bios default -nographic -serial mon:stdio --no-reboot \
+#    -kernel build/kernel.elf
+
+$QEMU -machine virt -bios default --no-reboot \
     -kernel build/kernel.elf

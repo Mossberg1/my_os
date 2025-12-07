@@ -7,3 +7,7 @@
 *.bin
 *.log
 *.pcap
+
+# python
+.venv/
+venv/

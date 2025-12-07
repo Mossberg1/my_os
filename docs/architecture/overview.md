@@ -1,0 +1,33 @@
+# Architecture Overview
+
+This document provides of overview of the OS architecture and design.
+
+```puml
+@startuml
+
+top to bottom direction
+
+skinparam componentStyle rectangle
+
+rectangle "Userspace" {
+   Component "libc" as libc
+   Component "applications" as applications
+}
+
+rectangle "Kernel" {
+    frame "Core Services" {
+        Component "drivers" as drivers
+    }
+
+    Component "Harware Abstraction Layer (HAL)" as hal
+}
+
+rectangle "RISC-V" as RISCV
+
+Userspace --> Kernel : System Call Interface
+Kernel --> RISCV
+
+drivers .> hal
+
+@enduml
+```

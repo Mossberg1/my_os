@@ -1,0 +1,22 @@
+site_name: OS Project
+nav:
+    - Home: index.md
+    - 'Build and Run': build_and_run.md
+    - Architecture:
+        - Overview: architecture/overview.md
+    - Kernel:
+        - Boot Process: kernel/boot.md
+        - HAL: kernel/hal.md
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+
+plugins:
+    - plantuml:
+        puml_url: https://www.plantuml.com/plantuml/
+        num_workers: 8
