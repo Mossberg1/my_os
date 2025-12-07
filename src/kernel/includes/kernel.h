@@ -1,10 +1,10 @@
 #pragma once
 
-#include <stdio.h>
+#include <console.h>
 
 __attribute__((noreturn))
 static inline void panic(const char* file, int line, const char* fmt, ...) {
-    printf("PANIC: %s:%d: ", file, line);
+    kprintf("PANIC: %s:%d: ", file, line);
     while (1) {
         __asm__ __volatile__("wfi");
     }

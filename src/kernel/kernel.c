@@ -1,6 +1,7 @@
 #include <kernel.h>
-#include <stdio.h>
-#include <string.h>
+#include <kstring.h>
+#include <ktypes.h>
+#include <console.h>
 
 // https://operating-system-in-1000-lines.vercel.app/en/08-exception
 
@@ -25,9 +26,9 @@ struct sbiret sbi_call(long arg0, long arg1, long arg2, long arg3, long arg4, lo
 }
 
 void kernel_main(void) {
-    memset(__bss, 0, (size_t) __bss_end - (size_t) __bss);
+    kmemset(__bss, 0, (size_t) __bss_end - (size_t) __bss);
 
-    printf("Hello, World!\n");
+    kprintf("Hello, World!\n");
 
     // kernel loop
     for (;;) {

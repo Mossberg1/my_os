@@ -16,10 +16,16 @@ mkdir -p build/obj
 # Build libc
 $CC $CFLAGS $INCLUDES -c -o build/obj/stdio.o src/libc/stdio.c
 $CC $CFLAGS $INCLUDES -c -o build/obj/string.o src/libc/string.c
+$CC $CFLAGS $INCLUDES -c -o build/obj/console.o src/kernel/console/console.c
+$CC $CFLAGS $INCLUDES -c -o build/obj/kstring.o src/kernel/libk/kstring.c
 
 # Build the kernel
 $CC $CFLAGS $INCLUDES -Wl,-Tsrc/kernel/kernel.ld -Wl,-Map=build/kernel.map -o build/kernel.elf \
-    src/kernel/kernel.c build/obj/stdio.o build/obj/string.o
+    src/kernel/kernel.c \
+    build/obj/stdio.o \
+    build/obj/string.o \
+    build/obj/console.o \
+    build/obj/kstring.o
 
 $QEMU -machine virt -bios default -nographic -serial mon:stdio --no-reboot \
     -kernel build/kernel.elf
