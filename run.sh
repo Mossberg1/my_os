@@ -17,6 +17,7 @@ mkdir -p build/obj
 # RISCV:
 $CC $CFLAGS $INCLUDES -c -o build/obj/sbi.o src/kernel/arch/riscv/sbi.c
 $CC $CFLAGS $INCLUDES -c -o build/obj/hal.o src/kernel/arch/riscv/hal.c
+$CC $CFLAGS $INCLUDES -c -o build/obj/trap.o src/kernel/arch/riscv/trap.c
 
 # Build kernel modules
 $CC $CFLAGS $INCLUDES -c -o build/obj/console.o src/kernel/console/console.c
@@ -36,10 +37,9 @@ $CC $CFLAGS $INCLUDES -Wl,-Tsrc/kernel/kernel.ld -Wl,-Map=build/kernel.map -o bu
     build/obj/console.o \
     build/obj/kstring.o \
     build/obj/hal.o \
-    build/obj/sbi.o
+    build/obj/sbi.o \
+    build/obj/trap.o
 
-#$QEMU -machine virt -bios default -nographic -serial mon:stdio --no-reboot \
-#    -kernel build/kernel.elf
-
-$QEMU -machine virt -bios default --no-reboot \
+$QEMU -machine virt -bios default -nographic -serial mon:stdio --no-reboot \
     -kernel build/kernel.elf
+

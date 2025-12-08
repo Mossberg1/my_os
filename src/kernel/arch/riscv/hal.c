@@ -1,5 +1,9 @@
 #include <hal.h>
 #include <sbi.h>
+#include <csr.h>
+
+void riscv_kernel_entry();
+
 
 void hal_putchar(char ch) 
 {
@@ -10,4 +14,10 @@ void hal_putchar(char ch)
 void hal_cpu_idle() 
 {
     __asm__ __volatile__("wfi");
+}
+
+
+void hal_trap_init() 
+{
+    WRITE_CSR(stvec, (uint32_t)riscv_kernel_entry);
 }

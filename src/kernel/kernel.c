@@ -8,9 +8,12 @@
 
 extern char __bss[], __bss_end[], __stack_top[]; // RISCV specific?
 
+
 void kernel_main(void) 
 {
     kmemset(__bss, 0, (size_t) __bss_end - (size_t) __bss); // RISCV specific? 
+    
+    hal_trap_init();
 
     kprintf("Hello, World!\n");
 

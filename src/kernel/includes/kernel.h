@@ -2,16 +2,13 @@
 
 #include <console.h>
 #include <hal.h>
+#include <ktypes.h>
 
-__attribute__((noreturn))
-static inline void panic(const char* file, int line, const char* fmt, ...) 
-{
-    kprintf("PANIC: %s:%d: ", file, line);
-    while (1) 
-    {
-        hal_cpu_idle();
-    }
-}
 
-#define PANIC(fmt, ...) panic(__FILE__, __LINE__, fmt, ##__VA_ARGS__)
+#define PANIC(fmt, ...)                                                       \
+    do {                                                                      \
+        kprintf("PANIC: %s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); \
+        while (1) {}                                                          \
+    } while (0)                                                               \
+
 
