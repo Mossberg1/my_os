@@ -3,19 +3,29 @@
 #include <ktypes.h>
 #include <console.h>
 #include <hal.h>
+#include <memory.h>
+#include <process.h>
 
-// https://operating-system-in-1000-lines.vercel.app/en/08-exception
+// https://operating-system-in-1000-lines.vercel.app/en/11-page-table
+/*
+ * Implement memory management.
+ * */
 
 extern char __bss[], __bss_end[], __stack_top[]; // RISCV specific?
 
+
+void delay(void) {
+    for (int i = 0; i < 30000000; i++)
+        __asm__ __volatile__("nop"); // do nothing
+}
 
 void kernel_main(void) 
 {
     kmemset(__bss, 0, (size_t) __bss_end - (size_t) __bss); // RISCV specific? 
     
     hal_trap_init();
-
-    kprintf("Hello, World!\n");
+    memory_init();
+    scheduler_init();
 
     // kernel loop
     for (;;) 

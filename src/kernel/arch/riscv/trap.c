@@ -89,6 +89,9 @@ void riscv_kernel_entry(void) {
         "csrr a0, sscratch\n"
         "sw a0, 4 * 30(sp)\n"
 
+        "addi a0, sp, 4 * 31\n"
+        "csrw sscratch, a0\n"
+
         "mv a0, sp\n"
         "call handle_trap\n"
 

@@ -58,6 +58,16 @@ void kprintf(const char *fmt, ...)
                         kputchar("0123456789abcdef"[nibble]);
                     }
                 }
+                case 'p': { // Print a pointer in hex.
+                    kputchar('0');
+                    kputchar('x');
+                    unsigned value = va_arg(vargs, unsigned);
+                    for (int i = 7; i >= 0; i--) {
+                        unsigned nibble = (value >> (i*4)) & 0xf;
+                        kputchar("0123456789abcdef"[nibble]);                    
+                    }
+                    break;
+                }
             }
         } else {
             kputchar(*fmt);
